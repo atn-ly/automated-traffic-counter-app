@@ -12,7 +12,7 @@ Built for the **Old Strathcona Business Association (OSBA)**, the application co
 
 ## Why I built it
 
-Old Strathcona is both a major business and entertainment destination and a transportation corridor. People move through the district by walking, cycling, driving, and taking transit, but OSBA did not have traffic data that fully captured this mix. Vehicle counts alone could not show the level of pedestrian activity in the area or how movement changed across locations, times, and event periods.
+Old Strathcona is both a major business and entertainment destination and a transportation corridor. People move through the district by walking, cycling, driving, and taking transit, but the OSBA did not have traffic data that fully captured this mix. Vehicle counts alone could not show the level of pedestrian activity in the area or how movement changed across locations, times, and event periods.
 
 I built the OSBA Traffic Counter to automate the process of turning raw camera footage into reliable pedestrian, bicycle, and vehicle counts that can be compared across locations, times, and events. Developing this system required addressing several real-world data challenges:
 
@@ -23,7 +23,7 @@ I built the OSBA Traffic Counter to automate the process of turning raw camera f
 - computer-vision detections needed quality control before reporting;
 - results needed to be summarized clearly for non-technical users.
 
-By bringing video processing, traffic counting, validation, analysis, and reporting into one application, the project gives OSBA stronger evidence for event evaluation, district planning, business support, grant applications, and member advocacy.
+By bringing video processing, traffic counting, validation, analysis, and reporting into one application, the project gives the OSBA stronger evidence for event evaluation, district planning, business support, grant applications, and member advocacy.
 
 ## Key capabilities
 
