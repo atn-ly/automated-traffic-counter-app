@@ -1,16 +1,16 @@
-# OSBA Traffic Counter
+# 🚦 OSBA Traffic Counter
 
 An end-to-end desktop application that transforms traffic-camera footage into validated multimodal traffic counts.
 
 Built for the **Old Strathcona Business Association (OSBA)**, the application combines computer vision, data quality control, interactive review, and automated reporting in one reproducible workflow. It detects and tracks pedestrians, bicycles, cars, trucks, buses, and motorcycles, determines when they cross user-defined counting lines, and summarizes the results by direction, hour, camera, and date.
 
-## Application demo
+## 🎥 Application demo
 
 [![Watch the OSBA Traffic Counter application demo](docs/osba-traffic-counter-demo.png)](https://www.youtube.com/watch?v=BRXLsiKIERQ)
 
 **[Watch the full application demo on YouTube](https://www.youtube.com/watch?v=BRXLsiKIERQ)**
 
-## Why I built it
+## 💡 Why I built it
 
 Old Strathcona is both a major business and entertainment destination and a transportation corridor. People move through the district by walking, cycling, driving, and taking transit, but the OSBA did not have traffic data that fully captured this mix. Vehicle counts alone could not show the level of pedestrian activity in the area or how movement changed across locations, times, and event periods.
 
@@ -25,9 +25,9 @@ I built the OSBA Traffic Counter to automate the process of turning raw camera f
 
 By bringing video processing, traffic counting, validation, analysis, and reporting into one application, the project gives the OSBA stronger evidence for event evaluation, district planning, business support, grant applications, and member advocacy.
 
-## Key capabilities
+## ✨ Key capabilities
 
-### Computer vision and tracking
+### 👁️ Computer vision and tracking
 
 - Runs YOLO object detection for six pedestrian and vehicle classes.
 - Uses ByteTrack to maintain object identities across frames and short occlusions.
@@ -37,7 +37,7 @@ By bringing video processing, traffic counting, validation, analysis, and report
 - Includes an optional perspective-corrected detection zone for small, distant objects.
 - Uses CUDA and FP16 inference automatically when a compatible NVIDIA GPU is available.
 
-### Data quality and validation
+### ✅ Data quality and validation
 
 - Reads recording dates and start times from structured filenames instead of unreliable file metadata.
 - Combines fragmented recordings in timestamp order while preserving original timing.
@@ -46,7 +46,7 @@ By bringing video processing, traffic counting, validation, analysis, and report
 - Generates annotated quality-control videos showing detections, counting lines, directions, and running totals.
 - Stores project settings, metadata, detections, review decisions, and validated counts in SQLite.
 
-### Analytics and reporting
+### 📊 Analytics and reporting
 
 - Produces multimodal totals and Enter/Exit summaries by camera and date.
 - Aggregates accepted crossings into hourly counts.
@@ -55,7 +55,7 @@ By bringing video processing, traffic counting, validation, analysis, and report
 - Integrates historical weather context using Open-Meteo.
 - Exports self-contained HTML reports for individual cameras, camera comparisons, and daily trends.
 
-## Application workflow
+## 🔄 Application workflow
 
 | Stage | Purpose |
 |---|---|
@@ -70,7 +70,7 @@ By bringing video processing, traffic counting, validation, analysis, and report
 | **Camera Comparison** | Compare locations using totals, normalized rates, and hourly patterns. |
 | **Daily Trends** | Examine changes across dates alongside weather conditions. |
 
-## Technical design
+## 🛠️ Technical design
 
 | Component | Technology |
 |---|---|
@@ -85,7 +85,7 @@ By bringing video processing, traffic counting, validation, analysis, and report
 
 The application uses a modular `src` layout that separates the interface, processing pipeline, database operations, project management, video handling, analytics, and reporting. Long-running video tasks use worker threads so the desktop interface remains responsive, while batched inference and background writes improve throughput.
 
-## Project structure
+## 📁 Project structure
 
 ```text
 src/traffic_reviewer/
@@ -101,7 +101,7 @@ src/traffic_reviewer/
 └── ui/                    # PySide6 interface and video players
 ```
 
-## Basic usage
+## 🚀 Basic usage
 
 1. Create a project and select the object classes to detect.
 2. Import the video fragments and assign each recording to a camera.
@@ -112,11 +112,11 @@ src/traffic_reviewer/
 7. Inspect the annotated video in Quality Control.
 8. Generate camera, comparison, or daily-trend reports.
 
-## Privacy and repository scope
+## 🔒 Privacy and repository scope
 
 This repository contains application source code only. Traffic videos, project databases, detection evidence, model outputs, and generated reports are excluded from version control because they may contain sensitive information or large binary files.
 
-## Author
+## 👤 Author
 
 **Anna Tam Ly**  
 MSc in Modeling, Data and Predictions, University of Alberta
