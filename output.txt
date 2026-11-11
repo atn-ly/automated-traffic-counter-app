@@ -1,0 +1,116 @@
+=== M1: accuracy (10 audit clips, Saturday July 11) ===
+Original  Enter 0.616  Exit 0.396  Combined 0.511 (95% CI 0.344-0.640)  theta Enter 0.62  Exit 0.40  Combined 0.51
+v0.40     Enter 0.902  Exit 0.812  Combined 0.859 (95% CI 0.777-0.899)  theta Enter 0.93  Exit 0.95  Combined 0.94
+v0.45     Enter 0.961  Exit 0.810  Combined 0.889 (95% CI 0.872-0.903)  theta Enter 0.99  Exit 1.05  Combined 1.02
+
+Crossings per recorded camera-hour:
+day       Fri     Sat     Sun
+camera                       
+1       174.4   299.4   537.7
+2        43.8    52.8    93.4
+3        11.6    16.6    13.3
+4        40.5    62.9     NaN
+5        26.5    92.7   115.1
+6       168.0   237.0   275.1
+7       190.2     NaN     NaN
+8        53.0   141.3     NaN
+9       390.5   599.4   538.9
+10      106.2   726.6   585.6
+11      640.2  1071.1  1150.4
+
+=== M2: camera-day negative binomial ===
+Poisson Pearson dispersion = 76.2  (>>1 means overdispersed)
+===================================================================================
+                      coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+Intercept           5.2440      0.150     34.968      0.000       4.950       5.538
+C(camera)[T.2]     -1.6206      0.191     -8.490      0.000      -1.995      -1.246
+C(camera)[T.3]     -3.0760      0.202    -15.227      0.000      -3.472      -2.680
+C(camera)[T.4]     -1.6537      0.219     -7.562      0.000      -2.082      -1.225
+C(camera)[T.5]     -1.5072      0.191     -7.908      0.000      -1.881      -1.134
+C(camera)[T.6]     -0.3217      0.190     -1.697      0.090      -0.693       0.050
+C(camera)[T.7]      0.0038      0.276      0.014      0.989      -0.538       0.545
+C(camera)[T.8]     -1.1051      0.217     -5.087      0.000      -1.531      -0.679
+C(camera)[T.9]      0.5011      0.190      2.643      0.008       0.129       0.873
+C(camera)[T.10]     0.2767      0.191      1.452      0.146      -0.097       0.650
+C(camera)[T.11]     1.0973      0.189      5.804      0.000       0.727       1.468
+C(day)[T.Sat]       0.6704      0.107      6.253      0.000       0.460       0.881
+C(day)[T.Sun]       0.8043      0.117      6.892      0.000       0.576       1.033
+alpha               0.0531      0.015      3.571      0.000       0.024       0.082
+===================================================================================
+C(day)[T.Sat]: rate ratio 1.95 (95% CI 1.58-2.41)
+C(day)[T.Sun]: rate ratio 2.24 (95% CI 1.78-2.81)
+
+=== M3: side model ===
+=========================================================================================================
+                                            coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------------------------
+Intercept                                 4.1299      0.293     14.077      0.000       3.555       4.705
+C(side, Treatment("West"))[T.Central]     0.8668      0.456      1.902      0.057      -0.026       1.760
+C(side, Treatment("West"))[T.East]        1.6159      0.320      5.053      0.000       0.989       2.243
+C(day)[T.Sat]                             0.5962      0.350      1.702      0.089      -0.090       1.283
+C(day)[T.Sun]                             0.9818      0.372      2.637      0.008       0.252       1.712
+alpha                                     0.6237      0.150      4.145      0.000       0.329       0.919
+=========================================================================================================
+C(side, Treatment("West"))[T.Central]: rate ratio 2.38 (95% CI 0.97-5.81)
+C(side, Treatment("West"))[T.East]: rate ratio 5.03 (95% CI 2.69-9.42)
+C(day)[T.Sat]: rate ratio 1.82 (95% CI 0.91-3.61)
+C(day)[T.Sun]: rate ratio 2.67 (95% CI 1.29-5.54)
+Pooled rate by side and day:
+side  Central   East   West
+day                        
+Fri     179.1  350.1   59.4
+Sat     237.0  634.5  105.3
+Sun     275.1  791.8  224.7
+
+=== M4: hourly profile (11:00-16:59, camera-days with >= 6.9 recorded hours) ===
+n = 156 hourly counts from 26 camera-days
+quasi-Poisson dispersion phi = 17.4
+C(hour)[T.12]:C(day)[Fri]: 1.18 (95% CI 0.87-1.59)
+C(hour)[T.13]:C(day)[Fri]: 1.39 (95% CI 1.03-1.86)
+C(hour)[T.14]:C(day)[Fri]: 1.62 (95% CI 1.22-2.16)
+C(hour)[T.15]:C(day)[Fri]: 1.62 (95% CI 1.22-2.15)
+C(hour)[T.16]:C(day)[Fri]: 1.64 (95% CI 1.24-2.18)
+C(hour)[T.12]:C(day)[Sat]: 1.18 (95% CI 0.98-1.43)
+C(hour)[T.13]:C(day)[Sat]: 1.34 (95% CI 1.11-1.61)
+C(hour)[T.14]:C(day)[Sat]: 0.98 (95% CI 0.80-1.20)
+C(hour)[T.15]:C(day)[Sat]: 0.98 (95% CI 0.80-1.20)
+C(hour)[T.16]:C(day)[Sat]: 0.72 (95% CI 0.58-0.90)
+C(hour)[T.12]:C(day)[Sun]: 1.20 (95% CI 0.96-1.51)
+C(hour)[T.13]:C(day)[Sun]: 1.25 (95% CI 1.00-1.57)
+C(hour)[T.14]:C(day)[Sun]: 1.13 (95% CI 0.90-1.43)
+C(hour)[T.15]:C(day)[Sun]: 1.27 (95% CI 1.02-1.59)
+C(hour)[T.16]:C(day)[Sun]: 1.42 (95% CI 1.14-1.76)
+Day-specific vs common hour profile: F = 5.43 on (10, 115) df, p = 1.5e-06
+
+=== M5: Enter share by camera (all days) ===
+        enter   exit      n  enter_share     se
+camera                                         
+1        3644   3457   7101        0.513  0.006
+2         802    527   1329        0.603  0.013
+3         146     83    229        0.638  0.032
+4         375    350    725        0.517  0.019
+5         820    821   1641        0.500  0.012
+6        2453   2303   4756        0.516  0.007
+7         763    570   1333        0.572  0.014
+8         776    584   1360        0.571  0.013
+9        4676   4568   9244        0.506  0.005
+10       6819   2446   9265        0.736  0.005
+11       7051  13034  20085        0.351  0.003
+
+Spearman correlation of camera rates between days:
+day   Fri   Sat   Sun
+day                  
+Fri  1.00  0.88  0.83
+Sat  0.88  1.00  1.00
+Sun  0.83  1.00  1.00
+
+=== M6: survey proportions ===
+Arrived by car                       69/109 = 63.3%  (95% CI 53.9%-71.8%)
+Walked                               24/109 = 22.0%  (95% CI 15.3%-30.7%)
+Transit                              15/109 = 13.8%  (95% CI 8.5%-21.5%)
+Cycled                                5/109 = 4.6%  (95% CI 2.0%-10.3%)
+Edmonton FSA                         87/109 = 79.8%  (95% CI 71.3%-86.3%)
+1+ other district activity          104/109 = 95.4%  (95% CI 89.7%-98.0%)
+3+ other activities                  39/109 = 35.8%  (95% CI 27.4%-45.1%)
+Spend with vendors and businesses    72/109 = 66.1%  (95% CI 56.8%-74.3%)
